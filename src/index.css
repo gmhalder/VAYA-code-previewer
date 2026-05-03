@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nexus-bg: #05050a;
+  --color-nexus-surface: #0d0f1a;
+  --color-nexus-primary: #00e5ff;
+  --color-nexus-secondary: #b000ff;
+  --color-nexus-text: #e0e6ed;
+  --color-nexus-muted: #6b7280;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-nexus-bg text-nexus-text font-mono min-h-screen relative overflow-x-hidden select-none;
+  }
+
+  body::before {
+    content: '';
+    @apply fixed inset-0 z-[-1] pointer-events-none opacity-50;
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4), inset 0 0 10px rgba(0, 229, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
+}
+
+.purple-glow {
+  box-shadow: 0 0 20px rgba(176, 0, 255, 0.25);
+  border: 1px solid rgba(176, 0, 255, 0.4);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
